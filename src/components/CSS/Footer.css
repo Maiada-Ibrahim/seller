@@ -1,0 +1,41 @@
+.footer {
+    /* border: tomato solid; */
+    position: static;
+    margin-top: 2rem;
+    /* width: 100%; */
+    }
+    
+    
+    .FTV   {
+    
+        /* border: tomato solid; */
+        display: flex;
+        justify-content: space-between;
+    
+        }
+    
+    
+    
+    
+    .conti{
+    
+    /* border: tomato solid; */
+    /* width: 60%; */
+    /* margin: 0 auto; */
+    color: white;
+    /* position: relative; */
+    /* margin-left: 10rem; */
+    
+    }
+    
+    .rights { 
+    
+    /* margin-right: 12rem; */
+    }
+    
+    
+    .conti ul  {
+    /* position: absolute; */
+    /* list-style: none; */
+    /* top: -4rem; */
+    }

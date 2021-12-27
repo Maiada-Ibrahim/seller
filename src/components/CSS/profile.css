@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap");
+
+.gene {
+  background-color: white;
+  box-shadow: 0px 10rem 0px white, 0px -10rem 0px white;
+}
+
+.err {
+  padding: 6rem;
+  width: fit-content;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  height: 66vh;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.err img {
+  width: 250px;
+}
+.err p {
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 1.5pc;
+}
+
+.info-cont {
+  width: 100%;
+  background-size: cover;
+
+  height:300px;
+ background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-creative-technology-e-commerce-app-blue-is-the-background-picture-image_999460.jpg);
+
+}
+
+
+.info {
+  /* border: solid tomato; */
+  width: 70%;
+  padding: 5rem;
+  height: fit-content;
+  margin: 0 auto
+}
+
+.info h2 {
+  /* border: solid tomato; */
+  display: inline;
+  font-family: sans-serif;
+  color: white;
+  margin-left: 2rem;
+  font-size: 2.5pc;
+  font-weight: bolder;
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.349);
+}
+
+.userProfileImg {
+  width: 150px;
+  border-radius: 75px;
+  box-shadow: 0px 3px 7px #00000067;
+}
+
+.folders {
+  padding-left: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.219);
+  width: 50%;
+  margin: 0rem auto;
+  /* border: solid rgb(31, 29, 29); */
+  display: flex;
+  /* justify-content: space-around; */
+  text-align: center;
+  flex-wrap: wrap;
+  font-family:  sans-serif;
+  font-weight: bolder;
+  
+}
+
+.folders form {
+  border: solid #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+}
+
+.folders form:hover {
+
+  transform: scale(102%);
+}
+
+
+.folders form:active {
+
+  transform: scale(99%);
+}
+
+
+.folders input[type="submit"] {
+  /* border: solid tomato; */
+
+  background-color: transparent;
+  border-style: none;
+}
+
+.one-model {
+  width: 70%;
+  height: 550px;
+  overflow: auto;
+  margin: 1.5rem auto;
+  
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 2rem 0rem;
+border-left: black solid 0.1px ;
+}
+
+.one-model .card {
+  margin-left: 1rem;
+  /* border: solid tomato; */
+  width: 15rem;
+  height: 15rem;
+  /* padding: 2rem; */
+cursor: pointer;
+  background-color: transparent;
+  transition: 0.2s;
+  font-size: 1.3pc;
+}
+
+.one-model .card:hover {
+  transform: scale(102%);
+}
+
+.one-model .card:active {
+
+  transform: scale(99%);
+}
+
+
+.card-text{
+
+/* border: solid tomato; */
+height: 2rem;
+behavior: scroll;
+direction: right;
+}
+
+.one-model .card button {
+  width: 5rem;
+  margin: 0 auto;
+}
+
+iframe {
+  padding: 1rem;
+  width: 100%;
+  height: 74vh;
+  border-radius: 30px;
+}
+
+.my-modal {
+  width: 80vw;
+  height: fit-content;
+  max-width: 80vw;
+  /* padding-bottom: 1rem; */
+  /* border: solid tomato; */
+}
+
+.my-modal .modal-content {
+  border-radius: 15px;
+  padding-bottom: 1rem;
+}
+
+.my-modal .modal-content .modal-title {
+  margin-top: 0.75rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.my-modal button {
+  /* border: solid blue; */
+  width: 5rem;
+  margin: 0 auto;
+}
+
+.form-container {
+  margin: 0 auto;
+  width: 70%;
+  /* border: solid green; */
+  height: 7rem;
+  position: relative;
+}
+
+.form2 {
+  position: absolute;
+  /* border: solid blue; */
+  /* float: left; */
+  /* width: 100%; */
+  
+  /* display: flex; */
+right: 9.5rem;
+top: 3rem;
+  padding: 0;
+}
+
+.form2 input {
+  height: 3rem;
+  width: 15rem;
+  position: absolute;
+  right: 7rem;
+  box-shadow: 0px 2px 5px #0000004d;
+}
+
+.form2 button {
+  height: 3rem;
+  width: 5rem;
+  position: absolute;
+  right: 0rem;
+  top: 0.1px;
+  box-shadow: 0px 2px 5px #0000004d;
+}
+
+.form2 input:focus {
+  height: 3rem;
+  width: 15rem;
+  background-color: white;
+  box-shadow: 0px 2px 5px #0000004d;
+}
+
+.form2 input:active {
+  height: 3rem;
+  width: 15rem;
+  background-color: white;
+  box-shadow: 0px 2px 5px #0000004d;
+}
+
+.test {
+  font-size: 5pc;
+}
+
+.circlestuff {
+  position: absolute;
+  /* font-size: 1pc; */
+  /* right: 0; */
+  /* width: 10px; */
+  width: 30px;
+  left: -1rem;
+  top: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.circlestuff:hover {
+  transform: scale(115%);
+}
+
+
+.circlestuff2 {
+  position: absolute;
+  /* font-size: 1pc; */
+  /* right: 0; */
+  /* width: 10px; */
+  width: 30px;
+  left: -1rem;
+  top: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.circlestuff2:hover {
+  transform: scale(115%);
+}

@@ -1,0 +1,104 @@
+.userImg {
+    position: absolute;
+    margin-right: 1rem;
+    /* filter: invert(1); */
+    border-radius: 65px;
+    right: 0;
+    top: 2rem;
+  }
+  
+  .usertwo {
+    filter: invert(1);
+  }
+  
+  .TV {
+    position: relative;
+    /* border: solid tomato; */
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .only {
+    position: absolute;
+    right: 3rem;
+    background-color: transparent;
+    border-style: none;
+    /* padding: 0.2rem 0.5rem; */
+    margin-top: 0.9rem;
+    /* border: tomato solid; */
+  }
+  
+  .only:hover {
+    background-color: transparent;
+    border-style: none;
+    /* padding: 0.2rem 0.5rem; */
+    box-shadow: none;
+  }
+  
+  .only:active {
+    background-color: transparent;
+    border-style: none;
+    /* padding: 0.2rem 0.5rem; */
+  
+    box-shadow: none;
+  }
+  
+  .only:focus {
+    background-color: transparent;
+    border-style: none;
+    /* padding: 0.2rem 0.5rem; */
+    box-shadow: none;
+  }
+  
+  .navbar {
+    background-color: white;
+    /* border: tomato solid; */
+  }
+  
+  .me-auto {
+    /* border: tomato solid; */
+    /* margin-top: 0.5rem; */
+    margin-left: 1rem;
+    font-size: 1.2pc;
+  }
+  
+  .carousel span {
+    z-index: 10;
+    font-weight: bolder;
+    user-select: none;
+  }
+  
+  .carousel-indicators button {
+    color: transparent;
+  }
+  
+  .nav-item.dropdown {
+    margin-left: 1rem;
+    margin-top: 0.3px;
+    color: white;
+  }
+  
+  .nav-item.dropdown.hvrEfct {
+    color: white;
+  }
+  
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  
+  .link {
+  
+  margin-left: 1.5rem;
+  transition: 0.2s;
+  
+  }
+  
+  .link:hover {
+  
+  /* transform: scale(107%); */
+  /* border-bottom: 2px solid rgba(182, 20, 33, 0.87); */
+  box-shadow: 0px 3px 0px rgba(182, 20, 33, 0.87);
+  }
