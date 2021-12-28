@@ -7,6 +7,7 @@
 
 .err {
   padding: 6rem;
+  /* border: tomato solid; */
   width: fit-content;
   margin: 3rem auto;
   display: flex;
@@ -20,17 +21,19 @@
   width: 250px;
 }
 .err p {
+  /* margin-left: 1rem; */
   font-family: sans-serif;
   font-weight: bolder;
   font-size: 1.5pc;
 }
 
 .info-cont {
+  /* border: solid tomato; */
   width: 100%;
   background-size: cover;
 
   height:300px;
- background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-creative-technology-e-commerce-app-blue-is-the-background-picture-image_999460.jpg);
+ background-image: url(https://www.wallpaperflare.com/static/991/790/463/digital-art-abstract-cube-lines-wallpaper.jpg);
 
 }
 

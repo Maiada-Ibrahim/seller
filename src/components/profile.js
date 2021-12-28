@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import "./CSS/profile.css";
-import { Card, Button, Modal, Form } from "react-bootstrap/";
+import { Card, Button, Modal, Form ,InputGroup ,input,Input} from "react-bootstrap/";
 
 class Profile extends Component {
   constructor(props) {
@@ -72,6 +72,9 @@ class Profile extends Component {
                           <Card.Text style={{ marginTop: ".5rem" }}>
                           {item.location}
                           </Card.Text>
+                          <Card.Text style={{ marginTop: ".5rem" }}>
+                          {item.statusForThis}
+                          </Card.Text>
                           <img
                             className="circlestuff2"
                             onClick={() => {
@@ -82,6 +85,16 @@ class Profile extends Component {
                             src="https://img.icons8.com/flat-round/452/delete-sign.png"
                             alt="delete"
                           ></img>
+                           {this.state.email==item.sellerEmail ? (
+               <div className="acoElm">
+                <Form className="form1" onSubmit={this.props.stateRejectForProdect}>
+                  <Button type="submit">reject</Button>
+                </Form>
+                <Form className="form1" onSubmit={this.props.stateAcceptForProdect}>
+                  <Button type="submit">accept</Button>
+                </Form>
+              </div>):("")}
+
                         </Card>
                       );
                   })

@@ -7,6 +7,7 @@ import AddCollection from "./AddCollection";
 import { withAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./loginButton";
 import "./CSS/mainPage.css";
+import profile from "./profile";
 
 export class mainPage extends Component {
   constructor(props) {
@@ -80,7 +81,7 @@ export class mainPage extends Component {
     const user = this.props.auth0;
     console.log(  event.target.date.value );
     console.log(  event.target.time.value );
-
+    
     let modelInfo = {
     
       name: this.state.selectedResult.name,
@@ -92,6 +93,8 @@ export class mainPage extends Component {
       time: event.target.time.value,
       description:this.state.selectedResult.description,
       price:this.state.selectedResult.price,
+      statusForThis:"no response",
+      sellerEmail:this.state.selectedResult.sellerEmail,
       location:this.state.selectedResult.location
     };
     let modelData = await axios.post(
@@ -102,6 +105,17 @@ export class mainPage extends Component {
     this.setState({
       show: false,
     });
+  };
+  
+  stateAcceptForProdect = async () => {
+    // this.setState({
+    //   show: false,
+    // });
+  };
+  stateRejectForProdect = async () => {
+    // this.setState({
+    //   show: false,
+    // });
   };
 
   render() {
@@ -134,6 +148,7 @@ export class mainPage extends Component {
                   title={item.name}
                   showData={this.showModal}
                 />
+          
               );
             })}
         </div>
@@ -162,6 +177,10 @@ export class mainPage extends Component {
           )}
          
         </Modal>
+            <profile
+                stateAcceptForProdect={this.stateAcceptForProdect}
+                stateRejectForProdect={this.stateRejectForProdect}
+              />
       </div>
     );
   }
