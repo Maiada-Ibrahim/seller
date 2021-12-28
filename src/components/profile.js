@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withAuth0 } from "@auth0/auth0-react";
+import { withAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
 import "./CSS/profile.css";
 import { Card, Button, Modal, Form, InputGroup, input, Input } from "react-bootstrap/";
@@ -9,14 +9,17 @@ class Profile extends Component {
     super(props);
     this.state = {
       email: "",
-      resultforeverycollectin: [],
+       resultforeverycollectin: [],
       resultforsellercollectin: [],
+      selectobj:{}
+
 
     };
   }
   componentDidMount = async () => {
     const { user } = this.props.auth0;
     await this.setState({ email: `${user.email}` })
+    
     let data = await axios.get(`http://localhost:3001/getuserdata?email=${this.state.email}`)
     console.log(data.data)
     await this.setState({ resultforeverycollectin: data.data })
@@ -25,27 +28,37 @@ class Profile extends Component {
     console.log(data2.data)
     await this.setState({ resultforsellercollectin: data2.data })
   };
-  updatReject = async () => {
-   
+  updatReject = async (objinf) => {
     let modelInfo = {
-      name: this.props.selectedResult.name,
-      imageUrl: this.props.selectedResult.imageUrl,
-      email:this.props.selectedResult.email,
-      prodectName: this.props.selectedResult.prodectName,
-      prodectImg: this.props.selectedResult.prodectImg,
-      date: this.props.selectedResult.date,
-      time: this.props.selectedResult.time,
-      description:this.props.selectedResult.description,
-      price:this.props.selectedResult.price,
+      name:objinf.name,
+      imageUrl: objinf.imageUrl,
+      email: objinf.email,
+      prodectName:objinf.prodectName,
+      prodectImg: objinf.prodectImg,
+      date: objinf.date,
+      time: objinf.time,
+      description:objinf.description,
+      price:objinf.price,
       statusForThis:"reject",
-      sellerEmail:this.props.selectedResult.sellerEmail,
-      location:this.props.selectedResult.location,
-      _id:this.props.selectedResult._id
+      sellerEmail:objinf.sellerEmail,
+      location:objinf.location,
+      _id:objinf._id
     };
-  
-    this.props.stateRejectForProdect(modelInfo)
+    await this.setState({ selectobj: modelInfo })
+    let id=this.state.selectobj._id
+
+    let data = await axios.put(`http://localhost:3001/updatedata/${id}`,this.state.selectobj);
+   await this.setState({
+    resultforeverycollectin: data.data,
+    resultforsellercollectin:data.data,
+   })
+   let arr=[];
+   for (let i = 0; i <this.state.resultforsellercollectin.length; i++) {
+   if (this.state.resultforsellercollectin[i].statusForThis != "reject")
+   arr.push(this.state.resultforsellercollectin[i])
+  }
+  await this.setState({ resultforsellercollectin: arr })
 }
- 
 
   delete = async (id) => {
     let data = await axios.delete(`http://localhost:3001/deletedata/${id}?email=${this.state.email}`)
@@ -77,7 +90,7 @@ class Profile extends Component {
             <div style={{ margin: "2rem auto", width: "fit-content", fontSize: "1.5pc", fontWeight: "bolder" }}>{this.state.nameofselectcoolectin}</div>
             <div className="folder-models">
               <div className="one-model">
-                {this.state.resultforeverycollectin.length !== 0  && this.state.resultforsellercollectin.length !== 0 ? (
+                {this.state.resultforeverycollectin.length !== 0   ? (
                   this.state.resultforeverycollectin.map((item) => {
                     return (
                       <Card>
@@ -119,12 +132,12 @@ class Profile extends Component {
                   )
                 ) : (
                   <div>
-                    <p>this folder is empty</p>
+                    <p></p>
                   </div>
                 )
                 
                 }
-                {this.state.resultforsellercollectin.length !== 0  && this.state.resultforeverycollectin.length !== 0 ? (
+                {this.state.resultforsellercollectin.length !== 0  ? (
                   this.state.resultforsellercollectin.map((item) => {
                     return (
                       <Card>
@@ -147,16 +160,17 @@ class Profile extends Component {
                         <Card.Text style={{ marginTop: ".5rem" }}>
                           {item.statusForThis}
                         </Card.Text>
-                  
-                        {this.state.email == item.sellerEmail ? (
-                          <div >
-                            <Form  onSubmit={this.updatReject}>
-                              <Button type="submit">reject</Button>
-                            </Form>
-                            <Form  onSubmit={this.props.stateAcceptForProdect}>
-                              <Button type="submit">accept</Button>
-                            </Form>
-                          </div>) : ("")}
+                        
+                              <img
+                          className="circlestuff2"
+                          onClick={() => {
+                            this.updatReject(
+                              item
+                            );
+                          }}
+                          src="https://img.icons8.com/flat-round/452/delete-sign.png"
+                          alt="delete"
+                        ></img>
 
                       </Card>
                     );
@@ -167,7 +181,7 @@ class Profile extends Component {
                   )
                 ) : (
                   <div>
-                    <p>this folder is empty</p>
+                    <p></p>
                   </div>
                 )
                 

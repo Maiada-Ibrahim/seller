@@ -110,34 +110,34 @@ export class mainPage extends Component {
     //   show: false,
     // });
   };
-  stateRejectForProdect = async (inf) => {
-    const user = this.props.auth0;
-     let modelInfo = {
-      name: this.state.selectedResult.name,
-      imageUrl: this.state.selectedResult.imageUrl,
-      email: user.user.email,
-      prodectName: this.state.selectedResult.prodectName,
-      prodectImg: this.state.selectedResult.prodectImg,
-      date: this.state.selectedResult.date,
-      time: this.state.selectedResult.time,
-      description:this.state.selectedResult.description,
-      price:this.state.selectedResult.price,
-      statusForThis:"no response",
-      sellerEmail:this.state.selectedResult.sellerEmail,
-      location:this.state.selectedResult.location,
-      _id:inf._id
-    };
-     await this.setState({
-       objinf: modelInfo,
-     })
-   let _id=this.state.objinf._id
-   console.log(_id)
+  // stateRejectForProdect = async (inf) => {
+  //   const user = this.props.auth0;
+  //    let modelInfo = {
+  //     name: this.state.selectedResult.name,
+  //     imageUrl: this.state.selectedResult.imageUrl,
+  //     email: user.user.email,
+  //     prodectName: this.state.selectedResult.prodectName,
+  //     prodectImg: this.state.selectedResult.prodectImg,
+  //     date: this.state.selectedResult.date,
+  //     time: this.state.selectedResult.time,
+  //     description:this.state.selectedResult.description,
+  //     price:this.state.selectedResult.price,
+  //     statusForThis:"no response",
+  //     sellerEmail:this.state.selectedResult.sellerEmail,
+  //     location:this.state.selectedResult.location,
+  //     _id:inf._id
+  //   };
+  //    await this.setState({
+  //      objinf: modelInfo,
+  //    })
+  //  let _id=this.state.objinf._id
+  //  console.log(_id)
 
-   let data = await axios.put(`http://localhost:3001/update/${_id}`,modelInfo);
-   await this.setState({
-     selectedResult: data.data
-   })
-  };
+  //  let data = await axios.put(`http://localhost:3001/update/${_id}`,modelInfo);
+  //  await this.setState({
+  //    selectedResult: data.data
+  //  })
+  // };
 
   render() {
     const { user, isAuthenticated } = this.props.auth0;
@@ -198,12 +198,7 @@ export class mainPage extends Component {
           )}
          
         </Modal>
-            <profile
-                stateAcceptForProdect={this.stateAcceptForProdect}
-                stateRejectForProdect={this.stateRejectForProdect}
-                selectedResult={this.state.selectedResult}
-
-              />
+         
       </div>
     );
   }
