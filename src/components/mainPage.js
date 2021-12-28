@@ -24,6 +24,8 @@ export class mainPage extends Component {
       collectionnamearr: [],
       addnewwcollecction: [],
       showprofile: false,
+      objinf:[],
+
     };
   }
 
@@ -78,12 +80,9 @@ export class mainPage extends Component {
 
   addmodels = async (event) => {
     event.preventDefault();
-    const user = this.props.auth0;
-    console.log( this.state.selectedResult.sellerEmail );
-    console.log(  event.target.time.value );
-    
+    const user = this.props.auth0;  
     let modelInfo = {
-    
+  
       name: this.state.selectedResult.name,
       imageUrl: this.state.selectedResult.imageUrl,
       email: user.user.email,
@@ -101,7 +100,6 @@ export class mainPage extends Component {
       `${process.env.REACT_APP_SERVER1}/adduserdata`,
       modelInfo
     );
-
     this.setState({
       show: false,
     });
@@ -112,10 +110,33 @@ export class mainPage extends Component {
     //   show: false,
     // });
   };
-  stateRejectForProdect = async () => {
-    // this.setState({
-    //   show: false,
-    // });
+  stateRejectForProdect = async (inf) => {
+    const user = this.props.auth0;
+     let modelInfo = {
+      name: this.state.selectedResult.name,
+      imageUrl: this.state.selectedResult.imageUrl,
+      email: user.user.email,
+      prodectName: this.state.selectedResult.prodectName,
+      prodectImg: this.state.selectedResult.prodectImg,
+      date: this.state.selectedResult.date,
+      time: this.state.selectedResult.time,
+      description:this.state.selectedResult.description,
+      price:this.state.selectedResult.price,
+      statusForThis:"no response",
+      sellerEmail:this.state.selectedResult.sellerEmail,
+      location:this.state.selectedResult.location,
+      _id:inf._id
+    };
+     await this.setState({
+       objinf: modelInfo,
+     })
+   let _id=this.state.objinf._id
+   console.log(_id)
+
+   let data = await axios.put(`http://localhost:3001/update/${_id}`,modelInfo);
+   await this.setState({
+     selectedResult: data.data
+   })
   };
 
   render() {
@@ -180,6 +201,8 @@ export class mainPage extends Component {
             <profile
                 stateAcceptForProdect={this.stateAcceptForProdect}
                 stateRejectForProdect={this.stateRejectForProdect}
+                selectedResult={this.state.selectedResult}
+
               />
       </div>
     );
