@@ -79,7 +79,7 @@ export class mainPage extends Component {
   addmodels = async (event) => {
     event.preventDefault();
     const user = this.props.auth0;
-    console.log(  event.target.date.value );
+    console.log( this.state.selectedResult.sellerEmail );
     console.log(  event.target.time.value );
     
     let modelInfo = {
