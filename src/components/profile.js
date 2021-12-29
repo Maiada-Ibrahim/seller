@@ -123,21 +123,23 @@ class Profile extends Component {
                         <Card.Text style={{ marginTop: "1rem" }}>
                           {item.name}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.date}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.time}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.price}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.location}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text >
                           {item.statusForThis}
                         </Card.Text>
+                        {item.statusForThis != "accept" ? (
+
                         <img
                           className="circlestuff2"
                           onClick={() => {
@@ -148,6 +150,8 @@ class Profile extends Component {
                           src="https://img.icons8.com/flat-round/452/delete-sign.png"
                           alt="delete"
                         ></img>
+                        ):("")}
+
                       </Card>
                     );
                   }
@@ -170,40 +174,46 @@ class Profile extends Component {
                         <Card.Text style={{ marginTop: "1rem" }}>
                           {item.name}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.date}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.time}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.price}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.location}
                         </Card.Text>
-                        <Card.Text style={{ marginTop: ".5rem" }}>
+                        <Card.Text style={{ marginTop: ".1rem" }}>
                           {item.statusForThis}
                         </Card.Text>
+                        {item.statusForThis == "no response" ? (
+                        <  div>
+                            <Button
+                          
+                            onClick={() => {
+                              this.updatReject(
+                                item
+                              );
+                            }}
+                            
+                          >reject</Button>
+                          <Button
+                            
+                            onClick={() => {
+                              this.updatAccept(
+                                item
+                              );
+                            }}
+                           
+                          >accept</Button>
+                          </div>
+                        ):("")}
 
-                        <Button
-                          
-                          onClick={() => {
-                            this.updatReject(
-                              item
-                            );
-                          }}
-                          
-                        >reject</Button>
-                        <Button
-                          
-                          onClick={() => {
-                            this.updatAccept(
-                              item
-                            );
-                          }}
-                         
-                        >accept</Button>
+                      
+                        
                       </Card>
                     );
                   }
