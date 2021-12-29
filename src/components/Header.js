@@ -30,14 +30,14 @@ class Header extends React.Component {
                 userSelect: "none",
               }}
             >
-            Absher
+              Absher
             </span>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              
+
               <Link
                 className="link"
                 style={{
@@ -49,17 +49,21 @@ class Header extends React.Component {
               >
                 Home
               </Link>
-              <Link
-                className="link"
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  marginTop: "0.5rem",
-                }}
-                to="/profile"
-              >
-                Profile
-              </Link>
+              {this.props.auth0.isAuthenticated ?
+                <Link
+                  className="link"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    marginTop: "0.5rem",
+                  }}
+                  to="/profile"
+                >
+                  Profile
+                </Link>
+                : ""}
+
+
 
               <Link
                 className="link"
