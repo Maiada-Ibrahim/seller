@@ -138,7 +138,7 @@ class Profile extends Component {
                         <Card.Text >
                           {item.statusForThis}
                         </Card.Text>
-                        {item.statusForThis != "accept" ? (
+                        
 
                         <img
                           className="circlestuff2"
@@ -150,7 +150,7 @@ class Profile extends Component {
                           src="https://img.icons8.com/flat-round/452/delete-sign.png"
                           alt="delete"
                         ></img>
-                        ):("")}
+                       
 
                       </Card>
                     );
