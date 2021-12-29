@@ -9,9 +9,9 @@ class Profile extends Component {
     super(props);
     this.state = {
       email: "",
-       resultforeverycollectin: [],
+      resultforeverycollectin: [],
       resultforsellercollectin: [],
-      selectobj:{}
+      selectobj: {}
 
 
     };
@@ -19,7 +19,7 @@ class Profile extends Component {
   componentDidMount = async () => {
     const { user } = this.props.auth0;
     await this.setState({ email: `${user.email}` })
-    
+
     let data = await axios.get(`http://localhost:3001/getuserdata?email=${this.state.email}`)
     console.log(data.data)
     await this.setState({ resultforeverycollectin: data.data })
@@ -30,35 +30,60 @@ class Profile extends Component {
   };
   updatReject = async (objinf) => {
     let modelInfo = {
-      name:objinf.name,
+      name: objinf.name,
       imageUrl: objinf.imageUrl,
       email: objinf.email,
-      prodectName:objinf.prodectName,
+      prodectName: objinf.prodectName,
       prodectImg: objinf.prodectImg,
       date: objinf.date,
       time: objinf.time,
-      description:objinf.description,
-      price:objinf.price,
-      statusForThis:"reject",
-      sellerEmail:objinf.sellerEmail,
-      location:objinf.location,
-      _id:objinf._id
+      description: objinf.description,
+      price: objinf.price,
+      statusForThis: "reject",
+      sellerEmail: objinf.sellerEmail,
+      location: objinf.location,
+      _id: objinf._id
     };
     await this.setState({ selectobj: modelInfo })
-    let id=this.state.selectobj._id
+    let id = this.state.selectobj._id
 
-    let data = await axios.put(`http://localhost:3001/updatedata/${id}`,this.state.selectobj);
-   await this.setState({
-    resultforeverycollectin: data.data,
-    resultforsellercollectin:data.data,
-   })
-   let arr=[];
-   for (let i = 0; i <this.state.resultforsellercollectin.length; i++) {
-   if (this.state.resultforsellercollectin[i].statusForThis != "reject")
-   arr.push(this.state.resultforsellercollectin[i])
+    let data = await axios.put(`http://localhost:3001/updatedata/${id}`, this.state.selectobj);
+    await this.setState({
+      resultforeverycollectin: data.data,
+      resultforsellercollectin: data.data,
+    })
+    let arr = [];
+    for (let i = 0; i < this.state.resultforsellercollectin.length; i++) {
+      if (this.state.resultforsellercollectin[i].statusForThis != "reject")
+        arr.push(this.state.resultforsellercollectin[i])
+    }
+    await this.setState({ resultforsellercollectin: arr })
   }
-  await this.setState({ resultforsellercollectin: arr })
-}
+  updatAccept = async (objinf) => {
+    let modelInfo = {
+      name: objinf.name,
+      imageUrl: objinf.imageUrl,
+      email: objinf.email,
+      prodectName: objinf.prodectName,
+      prodectImg: objinf.prodectImg,
+      date: objinf.date,
+      time: objinf.time,
+      description: objinf.description,
+      price: objinf.price,
+      statusForThis: "accept",
+      sellerEmail: objinf.sellerEmail,
+      location: objinf.location,
+      _id: objinf._id
+    };
+    await this.setState({ selectobj: modelInfo })
+    let id = this.state.selectobj._id
+
+    let data = await axios.put(`http://localhost:3001/updatedata/${id}`, this.state.selectobj);
+    await this.setState({
+      resultforeverycollectin: data.data,
+      resultforsellercollectin: data.data,
+    })
+  }
 
   delete = async (id) => {
     let data = await axios.delete(`http://localhost:3001/deletedata/${id}?email=${this.state.email}`)
@@ -90,7 +115,7 @@ class Profile extends Component {
             <div style={{ margin: "2rem auto", width: "fit-content", fontSize: "1.5pc", fontWeight: "bolder" }}>{this.state.nameofselectcoolectin}</div>
             <div className="folder-models">
               <div className="one-model">
-                {this.state.resultforeverycollectin.length !== 0   ? (
+                {this.state.resultforeverycollectin.length !== 0 ? (
                   this.state.resultforeverycollectin.map((item) => {
                     return (
                       <Card>
@@ -126,18 +151,18 @@ class Profile extends Component {
                       </Card>
                     );
                   }
-                
-                  
-                  
+
+
+
                   )
                 ) : (
                   <div>
                     <p></p>
                   </div>
                 )
-                
+
                 }
-                {this.state.resultforsellercollectin.length !== 0  ? (
+                {this.state.resultforsellercollectin.length !== 0 ? (
                   this.state.resultforsellercollectin.map((item) => {
                     return (
                       <Card>
@@ -160,31 +185,38 @@ class Profile extends Component {
                         <Card.Text style={{ marginTop: ".5rem" }}>
                           {item.statusForThis}
                         </Card.Text>
-                        
-                              <img
-                          className="circlestuff2"
+
+                        <Button
+                          
                           onClick={() => {
                             this.updatReject(
                               item
                             );
                           }}
-                          src="https://img.icons8.com/flat-round/452/delete-sign.png"
-                          alt="delete"
-                        ></img>
-
+                          
+                        >reject</Button>
+                        <Button
+                          
+                          onClick={() => {
+                            this.updatAccept(
+                              item
+                            );
+                          }}
+                         
+                        >accept</Button>
                       </Card>
                     );
                   }
-                
-                  
-                  
+
+
+
                   )
                 ) : (
                   <div>
                     <p></p>
                   </div>
                 )
-                
+
                 }
               </div>
             </div>
