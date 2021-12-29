@@ -28,7 +28,7 @@ export class mainPage extends Component {
 
     };
   }
-
+//------------------------------------show all data---------------------------------------------------
   componentDidMount = async () => {
     let requestURL = `${process.env.REACT_APP_SERVER1}/getalldata`;
     let retrivedURL = await axios.get(requestURL);
@@ -38,7 +38,7 @@ export class mainPage extends Component {
     });
   };
 
-  /////////////////////////////////////////////////////////////////////////////////
+  //---------------------------------------------search by seller name-----------------------------------------------------------
   getData = async (e) => {
     e.preventDefault();
     await this.setState({
@@ -76,7 +76,7 @@ export class mainPage extends Component {
     });
   };
 
-  //------------------------------------------------------------------------------------------------------
+  //-----------------------------------------add the prodect-------------------------------------------------------------
 
   addmodels = async (event) => {
     event.preventDefault();
@@ -105,39 +105,7 @@ export class mainPage extends Component {
     });
   };
   
-  stateAcceptForProdect = async () => {
-    // this.setState({
-    //   show: false,
-    // });
-  };
-  // stateRejectForProdect = async (inf) => {
-  //   const user = this.props.auth0;
-  //    let modelInfo = {
-  //     name: this.state.selectedResult.name,
-  //     imageUrl: this.state.selectedResult.imageUrl,
-  //     email: user.user.email,
-  //     prodectName: this.state.selectedResult.prodectName,
-  //     prodectImg: this.state.selectedResult.prodectImg,
-  //     date: this.state.selectedResult.date,
-  //     time: this.state.selectedResult.time,
-  //     description:this.state.selectedResult.description,
-  //     price:this.state.selectedResult.price,
-  //     statusForThis:"no response",
-  //     sellerEmail:this.state.selectedResult.sellerEmail,
-  //     location:this.state.selectedResult.location,
-  //     _id:inf._id
-  //   };
-  //    await this.setState({
-  //      objinf: modelInfo,
-  //    })
-  //  let _id=this.state.objinf._id
-  //  console.log(_id)
-
-  //  let data = await axios.put(`http://localhost:3001/update/${_id}`,modelInfo);
-  //  await this.setState({
-  //    selectedResult: data.data
-  //  })
-  // };
+//--------------------------------------------------------------------------------------------
 
   render() {
     const { user, isAuthenticated } = this.props.auth0;
@@ -173,6 +141,8 @@ export class mainPage extends Component {
               );
             })}
         </div>
+
+        
         <Modal
           dialogClassName="my-modal"
           show={this.state.show}
